@@ -112,7 +112,7 @@ def side_bar():
 
         if not st.session_state[sessionKeys.LOGGED_IN]:
             st.markdown(
-                "Please Sign Up to for upcoming features:\n- Lawyer recommendation for your case in other states. \n More Details about the Lawyers per case."
+                "Please Sign Up to for upcoming features:\n- Lawyer recommendation for your case in other state.\n- More Details about the Lawyers per case."
             )
 
 
