@@ -1,0 +1,7 @@
+streamlit
+streamlit-authenticator
+google-generativeai
+SQLAlchemy
+supabase
+praw
+openai==0.28
