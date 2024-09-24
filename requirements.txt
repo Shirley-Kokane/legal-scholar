@@ -4,5 +4,5 @@ google-generativeai
 SQLAlchemy
 supabase
 praw
-openai==0.28
+openai==1.42.0
 pinecone
