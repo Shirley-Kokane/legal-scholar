@@ -126,7 +126,7 @@ def init_env():
     # print("init_env")
 
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-    cn = Config("/export/home/ps/repo/lawvector/config.yaml")
+    cn = Config("config.yaml")
     st.session_state[sessionKeys.MODEL] = genai.GenerativeModel(
          "gemini-pro", safety_settings
      )

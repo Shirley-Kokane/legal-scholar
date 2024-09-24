@@ -54,7 +54,7 @@ class Config:
 class GeminiEmbed(Embed):
     def __init__(self, config: Config) -> None:
         super().__init__()
-        genai.configure(api_key="AIzaSyAnevAthqUYiz9Rf4JrdYSzokgqppDyRYk")
+        # genai.configure(api_key="")
 
         supported_models = [
             m.name
