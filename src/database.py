@@ -226,7 +226,7 @@ class SupabaseDatabase:
         # "CREATE TABLE IF NOT EXISTS anonymous_chat (chat_id TEXT PRIMARY KEY, message_history TEXT NOT NULL);"
 
     def username_exisits(self, username):
-        data, count,_ = (
+        data, count = (
             self.connection.table(self.user_table_name)
             .select("username")
             .eq("username", username)
@@ -239,7 +239,7 @@ class SupabaseDatabase:
         return True
 
     def email_exisits(self, email):
-        data, count,_ = (
+        data, count = (
             self.connection.table(self.user_table_name)
             .select("email")
             .eq("email", email)
@@ -263,7 +263,7 @@ class SupabaseDatabase:
         date_joined = str(datetime.datetime.now())
         hashed_password = Hasher([password]).generate()[0]
 
-        data, count, _ = (
+        data, count = (
             self.connection.table(self.user_table_name)
             .insert(
                 {
@@ -302,7 +302,7 @@ class SupabaseDatabase:
 
     def check_email_password(self, email, password):
 
-        data, count, _ = (
+        data, count = (
             self.connection.table(self.user_table_name)
             .select("username, hashed_password")
             .eq("email", email)
@@ -325,7 +325,7 @@ class SupabaseDatabase:
             gemini_json_history
         ), "Converted history do not match"
 
-        data, count, _ = (
+        data, count = (
             self.connection.table(self.chat_table_name)
             .upsert(
                 {
@@ -341,7 +341,7 @@ class SupabaseDatabase:
 
     def save_anonymous_chat(self, chat_id: str, message_history):
 
-         data, count, _ = (
+         data, count = (
             self.connection.table(self.anonymous_chat_table_name)
             .upsert(
                 {
@@ -354,7 +354,7 @@ class SupabaseDatabase:
 
     def get_all_chat_ids(self, email):
 
-        data, count,_ = (
+        data, count = (
             self.connection.table(self.chat_table_name)
             .select("chat_id, chat_name")
             .eq("email", email)
@@ -369,7 +369,7 @@ class SupabaseDatabase:
         return sorted(new_data)
 
     def get_next_chat_id(self, email):
-        data, count,_ = (
+        data, count = (
             self.connection.table(self.chat_table_name)
             .select("email")
             .eq("email", email)
@@ -379,7 +379,7 @@ class SupabaseDatabase:
         return len(data) + 1
 
     def get_chat(self, email: str, chat_id: int):
-        data, count,_ = (
+        data, count = (
             self.connection.table(self.chat_table_name)
             .select("message_history, gemini_history")
             .eq("email", email)
